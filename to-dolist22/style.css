@@ -1,0 +1,49 @@
+.container{
+    width: 60%;
+    /* height: 60%; */
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    /* background-color: blue; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.container form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container form input[type="text"]{
+    width: 75%;
+     margin: 10px 0; 
+     padding: 7px;
+     text-align: center;
+}
+.container form input[type="submit"]{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+.script{
+    background-color: white;
+    color: black;
+    width: 100%;
+    /* height: 20px; */
+}
+.deletebtn{
+    position: relative;
+    margin-top: 15px;
+    padding: 5px;
+    background-color:blueviolet;
+}
+.deletebtn button{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
