@@ -1,29 +1,40 @@
 
+
+
+
+
+
 let input=document.querySelector(`[name=text]`)
 let form=document.querySelector("form")
 let script=document.querySelector(".script")
-let arr=[]
+let aa=window.localStorage.getItem("aa")
+
+
+let arr=aa?JSON.parse(localStorage.getItem("aa")):[]
+let draw=function(a){
+  a.map(ele=>{
+    script.innerHTML+=`<div class="deletebtn">${ele["id"]}-${ele["name"]} <button onClick=deleteitem(${ele["id"]}) >delete</button></div>`
+ })
+}
+let allbrt=document.querySelectorAll(".btn")
+allbrt.forEach(ele=>ele.addEventListener("click",deleteitem()))
+console.log(allbrt)
+aa?draw(arr):""
 form.addEventListener("submit",(e)=>{
-    script.innerHTML=""
-    e.preventDefault()
-    arr.push(input.value)
-    let vv=[]
-    for(let i=0 ; i<arr.length ;i++){
-        script.innerHTML+=`
-    <div class="deletebtn">${i+1}- ${arr[i]} <button>delete</button> </div>`
-   
-    vv.push(`{
-        id:${i+1},
-        name:${arr[i]}
-    }`)
-    window.localStorage.aa=vv
-    }
-    
-    
-      
-          
-        
-   
-    
-    console.log(arr)
+  e.preventDefault();
+  let x={"id":arr.length+1,"name":input.value}
+  arr.push(x)
+  window.localStorage.setItem("aa",JSON.stringify(arr))
+  script.innerHTML=""
+  draw(JSON.parse(localStorage.getItem("aa")))
+
 })
+deleteitem=(id)=>{
+
+  let nar=arr.filter(ele=>ele.id!=id)
+  window.localStorage.setItem("aa",JSON.stringify(nar))
+  script.innerHTML=""
+  draw(JSON.parse(localStorage.getItem("aa")))
+  window.location.reload()
+
+}
